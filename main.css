@@ -64,6 +64,7 @@ td {
 }
 
 #canvas {
+	margin-top:13px;
 	padding-top: 13px;
 	padding-bottom: 43px;
 	margin: 0 auto;
