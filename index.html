@@ -211,25 +211,27 @@
 				<div class="chart">
 					<canvas id="canvas" height="180" width="357"></canvas>
 					<script type="text/javascript">
-						var ipChartData = [{
-							value : 30,
-							color : "#F7464A"
-						}, {
-							value : 50,
-							color : "#1A7CE8"
-						}, {
-							value : 100,
-							color : "#1EE881"
-						}, {
-							value : 40,
-							color : "#949FB1"
-						}, {
-							value : 120,
-							color : "#FFD13D"
-						}];
+						function fillChart(value1, value2, value3, value4, value5) {
+							var ipChartData = [{
+								value : value,
+								color : "#F7464A"
+							}, {
+								value : value2,
+								color : "#1A7CE8"
+							}, {
+								value : value3,
+								color : "#1EE881"
+							}, {
+								value : value4,
+								color : "#949FB1"
+							}, {
+								value : value5,
+								color : "#FFD13D"
+							}];
 
-						var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(ipChartData);
-
+							var ipChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(ipChartData, {animation : false});
+							
+						};
 					</script>
 				</div>
 			</div>
