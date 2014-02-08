@@ -1,77 +1,117 @@
-import thread
 import time
+import thread
 import sys
+
 from mingus.midi import fluidsynth
 
 
-class PacketReader:
-
-    step_interval = 0.1
+class PacketListener():
 
     def __init__(self):
-        self.last_step_time = time.time()
-        self.packet_queue = []
-        self.queue_length_history = []
-        self.last_pps = 0
-        self.pps_history = [0] * 10
-        self.average_pps = 0
+        self.clear_packet_queue()
+        thread.start_new_thread(self._packet_read_loop, ())
 
-        thread.start_new_thread(self.packet_listener, ())
+    def get_packet_queue(self):
+        return self._packet_queue
 
-        fluidsynth.init("/home/mus/Downloads/Bandpass.sf2", "alsa")
+    def clear_packet_queue(self):
+        self._packet_queue = []
 
-        while True:
-            self.queue_length_history.append(len(self.packet_queue))
-            if len(self.queue_length_history) == (1 / self.step_interval):
-                self.last_pps = 0
-                for queue_length in self.queue_length_history:
-                    self.last_pps += queue_length
-                self.queue_length_history = []
-                self.pps_history.pop(0)
-                self.pps_history.append(self.last_pps)
-                for pps in self.pps_history:
-                    self.average_pps += self.last_pps
-                self.average_pps /= 10
+    def pop_packet_queue(self):
+        packet_queue = self.get_packet_queue()
+        self.clear_packet_queue()
+        return packet_queue
 
-            self.packet_queue = []
-            time.sleep(self.step_interval)
+    def _add_packet_to_queue(self, packet):
+        self._packet_queue.append(packet)
 
-    def packet_listener(self):
+    def _packet_read_loop(self):
         while True:
             line = sys.stdin.readline()
-            packet = self.parse_tcpdump_line(line)
-            if packet is None: continue
+            packet = self._parse_tcpdump_line(line)
 
-            fluidsynth.play_Note(self.average_pps, 0, 100)
+            if packet is None:
+                continue
+            else:
+                return packet
 
-            self.packet_queue.append(packet)
-
-    def parse_tcpdump_line(self, line):
+    def _parse_tcpdump_line(self, line):
         words = line.split(" ")
-        word_num = 0
-        packet = {"params": ""}
 
         if words[1] != "IP":
             return None
 
-        for word in words:
-            if word_num == 0:
-                packet['time'] = word
-            elif word_num == 1:
-                pass
-            elif word_num == 3:
-                pass
-            elif word_num == 2:
-                packet['source'] = word
-            elif word_num == 4:
-                packet['destination'] = word[:-1]
-            else:
-                packet['params'] += word + " "
+        packet = {'time': time.time(),
+                  'source_ip': ".".join(words[2].split(".")[:-1]),
+                  'source_port': words[2].split(".")[-1],
+                  'destination_ip': ".".join(words[4][:-1].split(".")[:-1]),
+                  'destination_port': words[4][:-1].split(".")[-1],
+                  'params': " ".join(words[4:])[:-1]
+                  }
 
-            word_num += 1
+        self._add_packet_to_queue(packet)
 
-        packet['params'] = packet['params'][:-2]
-        return packet
+
+class PacketAnalyser:
+
+    _step_interval = 0.1
+    _queue_length_history_length = 5
+    _pps_history_length = 2
+
+    def __init__(self, packetlistener):
+        self._packetlistener = packetlistener
+        self._average_pps = 0
+        thread.start_new_thread(self._analyser_loop, ())
+
+    def get_average_pps(self):
+        return self._average_pps
+
+    def _analyser_loop(self):
+        queue_length_history = []
+        pps_history = [0] * self._pps_history_length
+
+        while True:
+            packet_queue = self._packetlistener.pop_packet_queue()
+            queue_length_history.append(len(packet_queue))
+
+            if len(queue_length_history) == self._queue_length_history_length:
+                last_pps = 0
+                for queue_length in queue_length_history:
+                    last_pps += queue_length
+
+                pps_history.pop(0)
+                pps_history.append(last_pps)
+
+                self._average_pps = 0
+                for pps in pps_history:
+                    self._average_pps += pps
+                self._average_pps /= self._pps_history_length
+
+                queue_length_history = []
+
+            time.sleep(self._step_interval)
+
+
+class MusicalPackets:
+
+    _step_interval = 0.5
+
+    def __init__(self):
+        self._packetlistener = PacketListener()
+        self._packetanalyser = PacketAnalyser(self._packetlistener)
+
+        fluidsynth.init("Bandpass.sf2", 'alsa')
+
+        self._music_loop()
+
+    def _music_loop(self):
+        current_note = 0
+
+        while True:
+            fluidsynth.stop_Note(current_note, 0)
+            current_note = self._packetanalyser.get_average_pps()
+            fluidsynth.play_Note(current_note, 0, 100)
+            time.sleep(self._step_interval)
 
 if __name__ == "__main__":
-    PacketReader()
+    MusicalPackets()
