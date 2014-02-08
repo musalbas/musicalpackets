@@ -14,5 +14,5 @@ def get_packets_per_duration(col_name, per_duration=1):
     return cursor.count()/duration
 
 def count_field_per_duration(col_name, group_field, per_duration=1):
-    result = _get_collection(col_name).aggregate({'$group':{'_id':'$' + group_field, 'count':{'$sum':1}}})
+    result = _get_collection(col_name).aggregate([{'$group':{'_id':'$' + group_field, 'count':{'$sum':1}}}, {'$sort':{'count':-1}}])
     return result['result']

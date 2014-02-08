@@ -1,0 +1,4 @@
+Uninstall FluidSynth from Aptitude
+Mingus from pip
+pyFluidSynth from pip
+fluidsynth from pip
