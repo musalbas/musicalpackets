@@ -4,11 +4,17 @@ import sys
 
 from mingus.midi import fluidsynth
 
+import musicalDatabase
+
 
 class PacketListener():
 
     def __init__(self):
         self.clear_packet_queue()
+
+        self._db = musicalDatabase.request_database("MusicalPackets")
+        self._db_collection = self._db.open_collection("packets")
+
         thread.start_new_thread(self._packet_read_loop, ())
 
     def get_packet_queue(self):
@@ -50,6 +56,7 @@ class PacketListener():
                   }
 
         self._add_packet_to_queue(packet)
+        self._db_collection.put(packet)
 
 
 class PacketAnalyser:
