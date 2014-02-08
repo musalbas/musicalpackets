@@ -4,6 +4,23 @@
 		<link rel="stylesheet" type="text/css" href="main.css">
 		<script type="text/javascript" src="bars.js"></script>
 		<script type="text/javascript" src="Chart.js"></script>
+        <script type="text/javascript">
+            function requestAjax() {
+                console.log("Begin call");
+                var req = new XMLHttpRequest();
+                req.open("GET", "http://localhost:9011/ajax", true);
+                req.onreadystatechange = function () {
+                    console.log("Almost? " + req.readyState + " " + req.status);
+                    console.log(req.response);
+                    if (req.readyState != 4 || req.status != 200) return;
+                    console.log("Recieved an ajax reply, woop!");
+                }
+                req.send();
+                console.log("Sent");
+            }
+
+            window.onload = requestAjax;
+        </script>
 		<style>
 			canvas {
 			}
