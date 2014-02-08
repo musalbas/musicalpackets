@@ -1,0 +1,100 @@
+body {
+	background-image: url("images/bg.png");
+}
+
+table {
+	margin-left: 8px;
+}
+
+tbody {
+	position: absolute;
+	left: 20px;
+	bottom: 43px;
+	
+}
+
+td {
+	width: 61px;
+	height: 13px;
+	padding-top: 2px;
+}
+
+.topRow {
+	margin-left: auto;
+	margin-right: auto;
+	width: 940px;
+}
+
+/* Download bars */
+#bar_x0_y0, #bar_x0_y1, #bar_x0_y2, #bar_x0_y3, #bar_x0_y4, #bar_x0_y5, #bar_x0_y6, #bar_x0_y7, #bar_x1_y0, #bar_x1_y1, #bar_x1_y2, #bar_x1_y3, #bar_x1_y4, #bar_x1_y5, #bar_x1_y6, #bar_x1_y7 {
+	display: none;
+}
+
+/* Empty bars */
+#bar_x2_y0, #bar_x2_y1, #bar_x2_y2, #bar_x2_y3, #bar_x2_y4, #bar_x2_y5, #bar_x2_y6, #bar_x2_y7 {
+	display: none;
+}
+
+/* Upload bars */
+#bar_x3_y0, #bar_x3_y1, #bar_x3_y2, #bar_x3_y3, #bar_x3_y4, #bar_x3_y5, #bar_x3_y6, #bar_x3_y7, #bar_x4_y0, #bar_x4_y1, #bar_x4_y2, #bar_x4_y3, #bar_x4_y4, #bar_x4_y5, #bar_x4_y6, #bar_x4_y7 {
+	display: none;
+}
+
+.placeholderLeft {
+	background-image: url("images/960_placeholder_blue.png");
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 380px;
+	height: 279px;
+	text-align: center;
+	float: left;
+	position: relative;
+}
+
+.barGraph {
+	padding-top: 40px;
+	padding-left: 16px;
+}
+
+.bar {
+	float: left;
+	margin-left: 8px;
+	margin-bottom: 8px;
+}
+
+#canvas {
+	padding-top: 13px;
+	padding-bottom: 43px;
+	margin: 0 auto;
+}
+
+.placeholderRight {
+	background-image: url("images/960_placeholder_blue.png");
+	display: block;
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 380px;
+	height: 279px;
+	text-align: center;
+	float: left;
+}
+
+.empty {
+	float: left;
+	width: 180px;
+}
+
+.widePlaceholder {
+	background-image: url("images/960_wide_placeholder_blue.png");
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	width: 940px;
+	height: 330px;
+	text-align: center;
+}
+
