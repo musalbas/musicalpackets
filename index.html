@@ -2,8 +2,35 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="main.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="bars.js"></script>
 		<script type="text/javascript" src="Chart.js"></script>
+		<script type="text/javascript">
+			function fillChart(value1, value2, value3, value4, value5) {
+				var ipChartData = [{
+					value : value1,
+					color : "#F7464A"
+				}, {
+					value : value2,
+					color : "#1A7CE8"
+				}, {
+					value : value3,
+					color : "#1EE881"
+				}, {
+					value : value4,
+					color : "#949FB1"
+				}, {
+					value : value5,
+					color : "#FFD13D"
+				}];
+
+				$("#rechart").html("<canvas id=\"canvas\" height=\"180\" width=\"357\"></canvas>");
+				var ipChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(ipChartData, {
+					animation : false
+				});
+
+			};
+		</script>
 		<style>
 			canvas {
 			}
@@ -208,31 +235,8 @@
 			</div>
 
 			<div class="placeholderRight">
-				<div class="chart">
+				<div class="chart" id="rechart">
 					<canvas id="canvas" height="180" width="357"></canvas>
-					<script type="text/javascript">
-						function fillChart(value1, value2, value3, value4, value5) {
-							var ipChartData = [{
-								value : value,
-								color : "#F7464A"
-							}, {
-								value : value2,
-								color : "#1A7CE8"
-							}, {
-								value : value3,
-								color : "#1EE881"
-							}, {
-								value : value4,
-								color : "#949FB1"
-							}, {
-								value : value5,
-								color : "#FFD13D"
-							}];
-
-							var ipChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(ipChartData, {animation : false});
-							
-						};
-					</script>
 				</div>
 			</div>
 		</div>
