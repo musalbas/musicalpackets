@@ -16,7 +16,7 @@
 			}
 
             function updatePacketHtml(data) {
-                var packetHtml = "<b>Last Packets Recieved:</b>"
+                var packetHtml = "<b>Last Packets Recieved:</b><br><br>"
                 for (var i = 0; i < data.last_packets.length; i++) {
                     var packet = data.last_packets[i];
                     packetHtml += "Source: " + packet.source_ip + ":" + packet.source_port + " Dest: " + packet.destination_ip + ":" + packet.destination_port + "<br>";
