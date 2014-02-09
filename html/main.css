@@ -59,7 +59,7 @@ p {
 	font-size: 10px;
 	float: left;
 	text-align: left;
-	line-height: 5px;
+	line-height: 200%;
 	width: 440px;
 }
 
