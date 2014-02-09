@@ -7,10 +7,22 @@
 		<script type="text/javascript" src="Chart.js"></script>
 		<script type="text/javascript">
 			function updateGraphics(data) {
-				console.log(data.packets_per_duration);
 				showDownloadBar(data.packets_per_duration);
+                showAverageBar(data.average_packets);
+                document.getElementsByClassName("sentPackets")[0].innerHTML = "Total Packets:    " + data.total_packets;
+                document.getElementsByClassName("averagePackets")[0].innerHTML = "3 Second Average:    " + data.average_packets;
 				fillChart(data.ip_counts);
+                updatePacketHtml(data);
 			}
+
+            function updatePacketHtml(data) {
+                var packetHtml = "<b>Last Packets Recieved:</b>"
+                for (var i = 0; i < data.last_packets.length; i++) {
+                    var packet = data.last_packets[i];
+                    packetHtml += "Source: " + packet.source_ip + ":" + packet.source_port + " Dest: " + packet.destination_ip + ":" + packet.destination_port + "<br>";
+                }
+                document.getElementById("listOfPackets").innerHTML = packetHtml
+             }
 
 			function requestAjax() {
 				var req = new XMLHttpRequest();
@@ -262,16 +274,14 @@
 					Number of Packets:
 				</p>
 				<p>
-					<span class = "sentPackets"> Sent: 		{{SENTPACKETS}} </span>
+					<span class = "sentPackets"></span>
 					<br/>
-					<span class = "averagePackets"> Average:	{{RECEIVEDPACKETS}} </span>
+					<span class = "averagePackets"></span>
 				</p>
 			</div>
 			<div class="packetListTitle">
 				<br/>
-				List of packets:
-				<br/>
-				<p class="listOfPackets"> {{LISTOFPACKETS}} </p>				
+				<p id="listOfPackets" class="listOfPackets"></p>				
 			</div>
 		</div>
 	</body>

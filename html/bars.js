@@ -1,6 +1,6 @@
 function showDownloadBar(noOfPackets) {
 	// Number of packets sent from python
-	if (noOfPackets > 96) {
+	if (noOfPackets > 768) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "block";
@@ -17,7 +17,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "block";
 		document.getElementById("bar_x0_y7").style.display = "block";
 		document.getElementById("bar_x1_y7").style.display = "block";
-	} else if (noOfPackets > 84) {
+	} else if (noOfPackets > 384) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "block";
@@ -34,7 +34,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "block";
 		document.getElementById("bar_x0_y7").style.display = "none";
 		document.getElementById("bar_x1_y7").style.display = "none";
-	} else if (noOfPackets > 72) {
+	} else if (noOfPackets > 192) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "block";
@@ -51,7 +51,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "none";
 		document.getElementById("bar_x0_y7").style.display = "none";
 		document.getElementById("bar_x1_y7").style.display = "none";
-	} else if (noOfPackets > 60) {
+	} else if (noOfPackets > 96) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "block";
@@ -85,7 +85,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "none";
 		document.getElementById("bar_x0_y7").style.display = "none";
 		document.getElementById("bar_x1_y7").style.display = "none";
-	} else if (noOfPackets > 36) {
+	} else if (noOfPackets > 24) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "block";
@@ -102,7 +102,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "none";
 		document.getElementById("bar_x0_y7").style.display = "none";
 		document.getElementById("bar_x1_y7").style.display = "none";
-	} else if (noOfPackets > 24) {
+	} else if (noOfPackets > 12) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "block";
@@ -119,7 +119,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "none";
 		document.getElementById("bar_x0_y7").style.display = "none";
 		document.getElementById("bar_x1_y7").style.display = "none";
-	} else if (noOfPackets > 12) {
+	} else if (noOfPackets > 0) {
 		document.getElementById("bar_x0_y0").style.display = "block";
 		document.getElementById("bar_x1_y0").style.display = "block";
 		document.getElementById("bar_x0_y1").style.display = "none";
@@ -136,7 +136,7 @@ function showDownloadBar(noOfPackets) {
 		document.getElementById("bar_x1_y6").style.display = "none";
 		document.getElementById("bar_x0_y7").style.display = "none";
 		document.getElementById("bar_x1_y7").style.display = "none";
-	} else if (noOfPackets <= 12) {
+	} else if (noOfPackets <= 0) {
 		document.getElementById("bar_x0_y0").style.display = "none";
 		document.getElementById("bar_x1_y0").style.display = "none";
 		document.getElementById("bar_x0_y1").style.display = "none";
@@ -158,7 +158,7 @@ function showDownloadBar(noOfPackets) {
 
 function showAverageBar(noOfPackets) {
 		// Number of packets sent from python
-	if (noOfPackets > 96) {
+	if (noOfPackets > 720) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -175,7 +175,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "block";
 		document.getElementById("bar_x3_y7").style.display = "block";
 		document.getElementById("bar_x4_y7").style.display = "block";
-	} else if (noOfPackets > 84) {
+	} else if (noOfPackets > 360) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -192,7 +192,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "block";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets > 72) {
+	} else if (noOfPackets > 160) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -209,7 +209,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "none";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets > 60) {
+	} else if (noOfPackets > 80) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -226,7 +226,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "none";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets > 48) {
+	} else if (noOfPackets > 40) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -243,7 +243,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "none";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets > 36) {
+	} else if (noOfPackets > 25) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -260,7 +260,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "none";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets > 24) {
+	} else if (noOfPackets > 10) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "block";
@@ -277,7 +277,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "none";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets > 12) {
+	} else if (noOfPackets > 0) {
 		document.getElementById("bar_x3_y0").style.display = "block";
 		document.getElementById("bar_x4_y0").style.display = "block";
 		document.getElementById("bar_x3_y1").style.display = "none";
@@ -294,7 +294,7 @@ function showAverageBar(noOfPackets) {
 		document.getElementById("bar_x4_y6").style.display = "none";
 		document.getElementById("bar_x3_y7").style.display = "none";
 		document.getElementById("bar_x4_y7").style.display = "none";
-	} else if (noOfPackets <= 12) {
+	} else if (noOfPackets <= 0) {
 		document.getElementById("bar_x3_y0").style.display = "none";
 		document.getElementById("bar_x4_y0").style.display = "none";
 		document.getElementById("bar_x3_y1").style.display = "none";

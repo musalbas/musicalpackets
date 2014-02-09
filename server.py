@@ -9,6 +9,9 @@ def handleAjax():
     response_dict = dict()
     response_dict['ip_counts'] = musicalStatistics.count_field_per_duration("packets", "source_ip", 60)[1:6]
     response_dict['packets_per_duration'] = musicalStatistics.get_packets_per_duration("packets", 10)
+    response_dict['average_packets'] = musicalStatistics.get_packets_per_duration("packets", 3)/3
+    response_dict['last_packets'] = musicalStatistics.get_last_X_packets("packets")
+    response_dict['total_packets'] = musicalStatistics.get_total_packets("packets")
     return json.dumps(response_dict) 
 
 @route('/html/<file_name>')

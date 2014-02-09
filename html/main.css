@@ -59,7 +59,7 @@ p {
 	font-size: 10px;
 	float: left;
 	text-align: left;
-	line-height: 5px;
+	line-height: 200%;
 }
 
 /* Download bars */
@@ -107,7 +107,7 @@ p {
 
 #canvas {
 	margin-top: 28px;
-	padding-top: 13px;
+	padding-top: 28px;
 	padding-bottom: 43px;
 	margin: 0 auto;
 }
