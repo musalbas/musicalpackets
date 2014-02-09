@@ -6,40 +6,32 @@
 		<script type="text/javascript" src="bars.js"></script>
 		<script type="text/javascript" src="Chart.js"></script>
         <script type="text/javascript">
+            function updateGraphics(data) {
+                console.log(data.packets_per_duration);
+                showDownloadBar(data.packets_per_duration);
+                fillChart(data.ip_counts);
+            }
+
             function requestAjax() {
-                console.log("Begin call");
                 var req = new XMLHttpRequest();
                 req.open("GET", "http://localhost:9011/ajax", true);
                 req.onreadystatechange = function () {
-                    console.log("Almost? " + req.readyState + " " + req.status);
-                    console.log(req.response);
                     if (req.readyState != 4 || req.status != 200) return;
-                    console.log("Recieved an ajax reply, woop!");
+                    updateGraphics(JSON.parse(req.response));
                 }
                 req.send();
-                console.log("Sent");
             }
 
-            window.onload = requestAjax;
+            window.onload = function() {
+                setInterval(requestAjax, 500);
+            }
 
-			function fillChart(value1, value2, value3, value4, value5) {
-				var ipChartData = [{
-					value : value1,
-					color : "#F7464A"
-				}, {
-					value : value2,
-					color : "#1A7CE8"
-				}, {
-					value : value3,
-					color : "#1EE881"
-				}, {
-					value : value4,
-					color : "#949FB1"
-				}, {
-					value : value5,
-					color : "#FFD13D"
-				}];
-
+			function fillChart(values) {
+                var colours = ["#F7464A", "#1A7CE8", "#1EE881", "#949FB1", "FFD13D"]
+                var ipChartData = new Array();
+                for(var i = 0; i < values.length; i++) {
+                   ipChartData[i] = {value: values[i].count, color: colours[i]};
+                }
 				$("#rechart").html("<canvas id=\"canvas\" height=\"180\" width=\"357\"></canvas>");
 				var ipChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(ipChartData, {
 					animation : false
