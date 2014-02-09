@@ -119,33 +119,30 @@ class MusicalPackets:
         self._music_loop()
 
     def _music_loop(self):
-        current_num = 0
-
         while True:
-            print(self._packetanalyser.get_average_pps())
             self._current_num = self._packetanalyser.get_average_pps() % 85
             self.play_note(discord=0)
             time.sleep(self._step_interval)
             self.stop_note()
-    
+
     def play_note(self, discord=0):
-       if discord:
+        if discord:
             self._current_note = self.generate_discord_container(self._current_num)
-       elif self._current_num == 0:
+        elif self._current_num == 0:
             self._current_note = self.generate_base_container("C")
-       else:
-            self._current_note = self.generate_triad_container(self._current_num, "C") 
-       fluidsynth.play_NoteContainer(self._current_note, 0, 100)
+        else:
+            self._current_note = self.generate_triad_container(self._current_num, "C")
+        fluidsynth.play_NoteContainer(self._current_note, 0, 100)
 
     def stop_note(self):
         fluidsynth.stop_NoteContainer(self._current_note, 0)
-        
+
     def generate_triad_container(self, number, key):
         scale = scales.diatonic(key)
         pos = number % len(scale)
         triad = chords.triad(scale[pos], key)
-        return NoteContainer(triad) 
-    
+        return NoteContainer(triad)
+
     def generate_discord_container(self, number):
         return NoteContainer(Note(number))
 
