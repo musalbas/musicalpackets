@@ -152,4 +152,4 @@ class MusicalPackets:
 
 if __name__ == "__main__":
     thread.start_new_thread(server.start, ())
-    MusicalPackets()
+    MusicalPackets(PacketListener())
