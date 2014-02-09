@@ -5,34 +5,39 @@
 		<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="bars.js"></script>
 		<script type="text/javascript" src="Chart.js"></script>
-        <script type="text/javascript">
-            function updateGraphics(data) {
-                console.log(data.packets_per_duration);
-                showDownloadBar(data.packets_per_duration);
-                fillChart(data.ip_counts);
-            }
+		<script type="text/javascript">
+			function updateGraphics(data) {
+				console.log(data.packets_per_duration);
+				showDownloadBar(data.packets_per_duration);
+				fillChart(data.ip_counts);
+			}
 
-            function requestAjax() {
-                var req = new XMLHttpRequest();
-                req.open("GET", "http://localhost:9011/ajax", true);
-                req.onreadystatechange = function () {
-                    if (req.readyState != 4 || req.status != 200) return;
-                    updateGraphics(JSON.parse(req.response));
-                };
-                req.send();
-            }
+			function requestAjax() {
+				var req = new XMLHttpRequest();
+				req.open("GET", "http://localhost:9011/ajax", true);
+				req.onreadystatechange = function() {
+					if (req.readyState != 4 || req.status != 200)
+						return;
+					updateGraphics(JSON.parse(req.response));
+				};
+				req.send();
+			}
 
-            window.onload = function() {
-                setInterval(requestAjax, 500);
-            };
+
+			window.onload = function() {
+				setInterval(requestAjax, 500);
+			};
 
 			function fillChart(values) {
-                var colours = ["#F7464A", "#1A7CE8", "#1EE881", "#949FB1", "FFD13D"];
-                var ipChartData = new Array();
-                for(var i = 0; i < values.length; i++) {
-                   ipChartData[i] = {value: values[i].count, color: colours[i]};
-                }
-				$("#rechart").html("<canvas id=\"canvas\" height=\"180\" width=\"357\"></canvas>");
+				var colours = ["#F7464A", "#1A7CE8", "#1EE881", "#949FB1", "#FFD13D"];
+				var ipChartData = new Array();
+				for (var i = 0; i < values.length; i++) {
+					ipChartData[i] = {
+						value : values[i].count,
+						color : colours[i]
+					};
+				}
+				$("#rechart").html("<canvas id=\"canvas\" height=\"200\" width=\"37\"></canvas>");
 				var ipChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(ipChartData, {
 					animation : false
 				});
@@ -52,184 +57,184 @@
 					<table>
 						<tbody>
 							<tr>
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y7">
 									<img src="images/seablue_bar_spaced.png"/>
 								</div></td>
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y7"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y7"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y7"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y7"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y6"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y6"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y6"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y6"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y6"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y5"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y5"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y5"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y5"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y5"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y4"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y4"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y4"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y4"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y4"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y3"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y3"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y3"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y3"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y3"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y2"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y2"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y2"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y2"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y2"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y1"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y1"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y1"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y1"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y1"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
 							</tr>
 							<tr>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x0_y0"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x1_y0"><img src="images/seablue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x2_y0"><img src="images/empty_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x3_y0"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
-								<td>
+								<td class="barCell">
 								<div id="bar_x4_y0"><img src="images/navyblue_bar_spaced.png"/>
 								</div></td>
 
@@ -244,15 +249,30 @@
 
 			<div class="placeholderRight">
 				<div class="chart" id="rechart">
-					<canvas id="canvas" height="180" width="357"></canvas>
+					<canvas id="canvas" height="200" width="377"></canvas>
 				</div>
 			</div>
 		</div>
 
 		<div class="separator"></div>
-		
+
 		<div class="widePlaceholder">
-			Hi
+			<div class="packetNumbers">
+				<p>
+					Number of Packets:
+				</p>
+				<p>
+					<span class = "sentPackets"> Sent: 		{{SENTPACKETS}} </span>
+					<br/>
+					<span class = "averagePackets"> Average:	{{RECEIVEDPACKETS}} </span>
+				</p>
+			</div>
+			<div class="packetListTitle">
+				<br/>
+				List of packets:
+				<br/>
+				<p class="listOfPackets"> {{LISTOFPACKETS}} </p>				
+			</div>
 		</div>
 	</body>
 </html>

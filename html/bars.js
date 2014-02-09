@@ -156,7 +156,7 @@ function showDownloadBar(noOfPackets) {
 	}
 };
 
-function showUploadBar(noOfPackets) {
+function showAverageBar(noOfPackets) {
 		// Number of packets sent from python
 	if (noOfPackets > 96) {
 		document.getElementById("bar_x3_y0").style.display = "block";

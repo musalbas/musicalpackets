@@ -12,7 +12,14 @@ tbody {
 	bottom: 43px;
 }
 
-td {
+p {
+	font-size: 35px;
+	font-family: "Arial Black";
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.barCell {
 	width: 61px;
 	height: 13px;
 	padding-top: 2px;
@@ -22,6 +29,37 @@ td {
 	margin-left: auto;
 	margin-right: auto;
 	width: 940px;
+}
+
+.packetNumbers {
+	left: 3%;
+	position: relative;
+	top: 5%;
+	float: left;
+	width: 474px;
+}
+
+.sentPackets {
+	color: #000066;
+}
+
+.averagePackets {
+	color: #336699;
+}
+
+.packetListTitle {
+	font-family: Monaco;
+	font-size: 19px;
+	float: left;
+	text-align: left;
+}
+
+.listOfPackets {
+	font-family: Monaco;
+	font-size: 10px;
+	float: left;
+	text-align: left;
+	line-height: 5px;
 }
 
 /* Download bars */
@@ -100,6 +138,5 @@ td {
 	margin-bottom: 40px;
 	width: 940px;
 	height: 330px;
-	text-align: center;
 }
 
