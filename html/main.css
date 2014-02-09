@@ -10,7 +10,6 @@ tbody {
 	position: absolute;
 	left: 20px;
 	bottom: 43px;
-	
 }
 
 td {
@@ -40,6 +39,11 @@ td {
 	display: none;
 }
 
+.separator {
+	clear: both;
+	display: block;
+}
+
 .placeholderLeft {
 	background-image: url("images/960_placeholder_blue.png");
 	margin-bottom: 40px;
@@ -64,7 +68,7 @@ td {
 }
 
 #canvas {
-	margin-top:13px;
+	margin-top: 13px;
 	padding-top: 13px;
 	padding-bottom: 43px;
 	margin: 0 auto;
