@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="main.css">
-		<script type="text/javascript" src="jquery-ui.min.js"></script>
+		<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="bars.js"></script>
 		<script type="text/javascript" src="Chart.js"></script>
         <script type="text/javascript">
@@ -18,16 +18,16 @@
                 req.onreadystatechange = function () {
                     if (req.readyState != 4 || req.status != 200) return;
                     updateGraphics(JSON.parse(req.response));
-                }
+                };
                 req.send();
             }
 
             window.onload = function() {
                 setInterval(requestAjax, 500);
-            }
+            };
 
 			function fillChart(values) {
-                var colours = ["#F7464A", "#1A7CE8", "#1EE881", "#949FB1", "FFD13D"]
+                var colours = ["#F7464A", "#1A7CE8", "#1EE881", "#949FB1", "FFD13D"];
                 var ipChartData = new Array();
                 for(var i = 0; i < values.length; i++) {
                    ipChartData[i] = {value: values[i].count, color: colours[i]};
@@ -249,20 +249,8 @@
 			</div>
 		</div>
 
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
+		<div class="separator"></div>
+		
 		<div class="widePlaceholder">
 			Hi
 		</div>
