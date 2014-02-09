@@ -110,8 +110,8 @@ class MusicalPackets:
     _step_interval = 0.5
     _current_num = 0
 
-    def __init__(self):
-        self._packetlistener = PacketListener()
+    def __init__(self, packetlistener):
+        self._packetlistener = packetlistener
         self._packetanalyser = PacketAnalyser(self._packetlistener)
 
         fluidsynth.init("Bandpass.sf2", 'alsa')
