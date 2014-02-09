@@ -5,6 +5,7 @@ import sys
 from mingus.midi import fluidsynth
 
 import musicalDatabase
+import server
 
 
 class PacketListener():
@@ -116,9 +117,10 @@ class MusicalPackets:
 
         while True:
             fluidsynth.stop_Note(current_note, 0)
-            current_note = self._packetanalyser.get_average_pps()
+            current_note = self._packetanalyser.get_average_pps() % 85
             fluidsynth.play_Note(current_note, 0, 100)
             time.sleep(self._step_interval)
 
 if __name__ == "__main__":
+    thread.start_new_thread(server.start, ())
     MusicalPackets()

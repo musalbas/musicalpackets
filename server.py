@@ -19,4 +19,5 @@ def return_file(file_name):
 def return_image(img):
     return static_file(img, root='./html/images')
 
-run(host='localhost',port='9011')
+def start():
+    run(host='localhost', port=9011)
