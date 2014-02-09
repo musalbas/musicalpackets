@@ -17,7 +17,7 @@ database = musicalDatabase.request_database("MusicalPackets")
 #    collection.put(packet)
 
 
-result = stats.count_field_per_duration("packets", 'source_ip', 10)
+result = stats.get_last_X_packets("packets")
 for data in result:
     print(data)
 
