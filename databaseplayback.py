@@ -1,14 +1,3 @@
-import time
-import thread
-import sys
-
-from mingus.midi import fluidsynth
-from mingus.containers.NoteContainer import NoteContainer
-from mingus.containers.Note import Note
-import mingus.core.scales as scales
-import mingus.core.chords as chords
-
-
 import musicalDatabase
 import server
 import musicalpackets
@@ -35,8 +24,3 @@ class databasePacketListener():
         self._current_time = self._current_time + musicalpackets.PacketAnalyser._step_interval
         packet_queue = self.get_packet_queue()
         return packet_queue
-
-
-if __name__ == "__main__":
-    thread.start_new_thread(server.start, ())
-    musicalpackets.MusicalPackets(databasePacketListener("packets"))
