@@ -14,4 +14,5 @@ try:
             MusicalPackets(databasePacketListener("packets"))
 except(KeyboardInterrupt):
     print("Exiting...");
+    quit()
 

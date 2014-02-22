@@ -1,3 +1,3 @@
 #!/bin/bash
 
-stdbuf -oL tcpdump -i wlan0 | python main.py playback
+python main.py playback
